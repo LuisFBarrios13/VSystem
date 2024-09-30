@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block content %}
+<hi>{{title}}{/h1}
+<table class="table table-dark table-striped">
+   <thead>
+     <tr>
+       <th scope="col">#</th>
+       <th scope="col">Nombre</th>
+       <th scope="col">Capacidad Maxmima</th>
+       <th scope="col">Profesor</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for curso in cursos %}
+     <tr>
+       <th scope="row">{{ forloop.counter }}</th>
+       <td>{{ curso.nombre }}</td>
+       <td>{{ curso.capacidadMaxima }}</td>
+       <td>{{ curso.profesor.nombre }}</td>
+     </tr>
+     {% endfor %}
+   </tbody>
+</table>
+
+{% endblock %}

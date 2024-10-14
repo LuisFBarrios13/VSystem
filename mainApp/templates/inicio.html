@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% load static %}  <!-- Carga de etiquetas estáticas -->
+
+{% block content %}
+
+<div id="content">
+    <h1>Sistemas distribuidos</h1>
+    <img src="{% static 'imagenes/ucc.png' %}" alt="Descripción de la imagen" style="max-width: 100%; height: auto;">
+
+    <h3>Contenido:</h3> 
+    <div class="cuadros">
+        <div class="cuadro">Inscripción de Estudiantes</div>
+        <div class="cuadro">Inscripción de Cursos</div>
+        <div class="cuadro">Relación entre Curso y Estudiante</div>
+        <div class="cuadro">Matrícula de Estudiante</div>
+    </div>
+</div>
+
+{% endblock %}

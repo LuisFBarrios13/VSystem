@@ -1,0 +1,95 @@
+{% extends "index.html" %}
+{% block content %}
+<h1 style="text-align: center;">{{ title }}</h1>
+
+<div style="text-align: right; margin-bottom: 10px;">
+    <button id="showFormButton" class="btn btn-primary">Agregar nueva Matricula</button>
+</div>
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Estudiante</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Fecha de inicio</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Costo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for matricula in matriculas %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ matricula.relacion.estudiante.nombre }} {{ matricula.relacion.estudiante.apellido }}</td>
+                <td>{{ matricula.relacion.curso.nombre }}</td>
+                <td>{{ matricula.fechaInicio }}</td>
+                <td>
+                    <span class="
+                        {% if matricula.estado == 'Activo' %} estado-activo 
+                        {% elif matricula.estado == 'Suspendido' %} estado-suspendido 
+                        {% elif matricula.estado == 'Finalizado' %} estado-finalizado 
+                        {% endif %}
+                    ">
+                        {{ matricula.estado }}
+                    </span>
+                </td>
+                <td>{{ matricula.costo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div class="backdrop"  id="backdrop"></div>
+
+    <section class="form-register" id="registrationForm" style="display: none;">
+        <h2>Inscribir Estudiante a Curso</h2>
+        <form action="{% url 'registrar_matricula' %}" method="POST">{% csrf_token %}
+
+            <label for="id_relacion">Estudiante y Curso</label>
+            <select class="controls" name="htrelacion" required>
+                <option value="">Seleccione un Estudiante y Curso</option>
+                {% for relacion in relaciones %}
+                <option value="{{ relacion.id }}">
+                    {{ relacion.estudiante.nombre }} {{ relacion.estudiante.apellido }} - {{ relacion.curso.nombre }}
+                </option>
+                {% endfor %}
+            </select>
+    
+            <label for="id_fechaInicio">Fecha de Inicio</label>
+            <input class="controls" type="date" name="htfechaInicio" required>
+    
+            <label for="id_estado">Estado</label>
+            <select class="controls" name="htestado" required>
+                <option value="Activo">Activo</option>
+                <option value="Suspendido">Suspendido</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+    
+            <label for="id_costo">Costo</label>
+            <input class="controls" type="number" step="0.01" name="htcosto" placeholder="Costo" required>
+    
+            <input class="botons" type="submit" value="Guardar" />
+            <button type="button" class="btn btn-primary" id="hideFormButton">Cancelar</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('showFormButton').onclick = function() {
+          var form = document.getElementById('registrationForm');
+          var backdrop = document.getElementById('backdrop');
+          form.style.display = 'block'; 
+          backdrop.style.display = 'block'; 
+        };
+      
+        document.getElementById('hideFormButton').onclick = function() {
+          var form = document.getElementById('registrationForm');
+          var backdrop = document.getElementById('backdrop');
+          form.style.display = 'none'; 
+          backdrop.style.display = 'none'; 
+        };
+      </script>
+
+{% endblock %}
+

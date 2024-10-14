@@ -1,5 +1,4 @@
 {% extends "index.html" %}
-
 {% block content %}
 <h1 style="text-align: center;">{{ title }}</h1>
 
@@ -73,20 +72,18 @@
 </section>
 
 <script>
-    // Función para mostrar el formulario y el fondo borroso
     document.getElementById('showFormButton').onclick = function() {
         var form = document.getElementById('registrationForm');
         var backdrop = document.getElementById('backdrop');
-        form.style.display = 'block'; // Muestra el formulario
-        backdrop.style.display = 'block'; // Muestra el fondo borroso
+        form.style.display = 'block'; 
+        backdrop.style.display = 'block'; 
     };
 
-    // Función para ocultar el formulario y el fondo borroso
     document.getElementById('hideFormButton').onclick = function() {
         var form = document.getElementById('registrationForm');
         var backdrop = document.getElementById('backdrop');
-        form.style.display = 'none'; // Oculta el formulario
-        backdrop.style.display = 'none'; // Oculta el fondo borroso
+        form.style.display = 'none'; 
+        backdrop.style.display = 'none'; 
     };
 </script>
 {% endblock %}

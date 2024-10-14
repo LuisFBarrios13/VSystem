@@ -4,6 +4,7 @@ from mainApp.views import inicio
 from persona.views import get_estudiantes, registrar_persona
 from curso.views import getCursos, inscribir_curso
 from relacion.views import getRelacion, relacionar_curso_est
+from matricula.views import getMatricula, registrar_matricula
 
 
 urlpatterns = [
@@ -15,5 +16,7 @@ urlpatterns = [
     path('registrarPersona/', registrar_persona),
     path('inscribirCurso/', inscribir_curso, name='inscribirCurso'),
     path('relacionar_curso_est/', relacionar_curso_est, name='relacionar_curso_est'),
-    path('lista-relacion/', getRelacion, name='lista-relacion')
+    path('lista-relacion/', getRelacion, name='lista-relacion'),
+    path('lista-matricula/', getMatricula, name='lista-matricula'),
+    path('registrar_matricula/', registrar_matricula, name='registrar_matricula'),
 ]

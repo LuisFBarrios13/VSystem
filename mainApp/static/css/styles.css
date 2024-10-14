@@ -11,9 +11,11 @@ body{
 
 
 header{
+    background: linear-gradient(to right, #1f53c5, #42a096); /* Ejemplo de gradiente */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     width: 1212px;
     height: 140px;
-    background-color: #686a6b;
+    background-color: #088fd2;
     margin: 0 auto;
 
 }
@@ -124,7 +126,7 @@ footer{
     margin: 0 auto;
     padding-top: 20px;
     padding-bottom: 20px;
-    box-shadow: 0px 0px 20px gray;    
+    box-shadow: 0px 0px 20px gray;
 }
 
 .box ul{
@@ -233,11 +235,13 @@ footer{
 }
 
 .title {
-    text-align: center; /* Centra el texto */
-    font-weight: bold; /* Pone el texto en negrita */
-    font-size: 24px; /* Ajusta el tamaño de la fuente según tus necesidades */
-    margin-bottom: 20px; /* Añade espacio debajo del título */
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 24px; 
+    margin-bottom: 20px; 
     font-family: 'Roboto', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .modal-backdrop {
@@ -322,5 +326,76 @@ legend {
 
 #tituloInscripcion {
     color: white; /* Cambia el color de la letra a blanco */
+}
+
+.estado-activo {
+    color: white; 
+    background-color: #39ff14; 
+    padding: 5px;
+    border-radius: 10px; 
+}
+
+.estado-suspendido {
+    color: white; 
+    background-color: red; 
+    padding: 5px;
+    border-radius: 10px; 
+}
+
+.estado-finalizado {
+    color: white; 
+    background-color: blue; 
+    padding: 5px;
+    border-radius: 10px; 
+}
+
+#content h1 {
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Espacio encima del título */
+    font-size: 36px; /* Tamaño de fuente */
+    color: #42a096; /* Color del texto */
+}
+
+#content img {
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+    margin: 20px auto; /* Centra la imagen y añade margen */
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    max-width: 80%; /* Limita el ancho máximo */
+}
+
+#content h1 {
+    color: black; 
+    font-family: 'Calibri', sans-serif; 
+    font-size: 50px;
+}
+
+.cuadros {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-top: 20px; 
+}
+
+.cuadro {
+    background-color: #42a096; 
+    color: white; 
+    padding: 20px; 
+    margin: 10px;
+    border-radius: 5px;
+    width: 400px; 
+    height: 50px;
+    text-align: center; 
+    font-size: 25px; 
+    font-weight: bold;
+    font-family: 'Calibri', sans-serif;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+#content h3 {
+    color: black; 
+    font-family: 'Calibri', sans-serif; 
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 45px;
 }
 

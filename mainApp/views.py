@@ -2,10 +2,7 @@ from django.shortcuts import render
 from .models import Curso
 
 def inicio(request):
-    return render(request, 'index.html');
-
-def get_prueba(request):
-    return render(request, 'prueba.html');
+    return render(request, 'inicio.html');
 
 def get_cursos(request):
     cursos = Curso.objects.all()

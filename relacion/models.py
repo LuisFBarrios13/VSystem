@@ -12,7 +12,7 @@ class Relacion(models.Model):
     notaFinal = models.DecimalField(max_digits=3, decimal_places=2)
 
     def __str__(self):
-        return f'{self.estudiante.nombre} - {self.estado} - Nota Final: {self.notaFinal}'
+        return f'{self.estudiante.nombre} - {self.estudiante.apellido} - Curso: {self.curso.nombre}'
     
     class Meta:
         db_table = 'Estudiante_Cursos'

@@ -1,12 +1,18 @@
 {% extends "index.html" %}
 {% block content %}
-<hi>{{title}}{/h1}
+{% load static %}
+<h1 style="text-align: center;">{{ title }}</h1>
+
+<div style="text-align: right; margin-bottom: 10px;">
+<button id="showFormButton" class="btn btn-primary">Inscribir Curso</button>
+</div>
+
 <table class="table table-dark table-striped">
    <thead>
      <tr>
        <th scope="col">#</th>
        <th scope="col">Nombre</th>
-       <th scope="col">Capacidad Maxmima</th>
+       <th scope="col">Capacidad Maxima</th>
        <th scope="col">Profesor</th>
      </tr>
    </thead>
@@ -23,5 +29,43 @@
 </table>
 
 
+<div class="backdrop"  id="backdrop"></div>
 
+<!-- Formulario -->
+<section class="form-register" id="registrationForm" style="display: none;">
+  <h2>Inscribir Curso</h2> 
+  <form action="{% url 'inscribirCurso' %}" method="POST">{% csrf_token %}
+      <label for="id_nombre">Nombre del Curso</label>
+      <input class="controls" type="text" name="txtnombre" placeholder="Nombre" required>
+
+      <label for="id_capacidadMaxima">Capacidad Máxima</label>
+      <input class="controls" type="number" name="txtcapacidadmaxima" placeholder="Capacidad Máxima" required>
+
+      <label for="id_profesor">Profesor</label>
+      <select class="controls" name="profesor">
+        <option value="">Seleccione un Profesor</option>
+        {% for profesor in profesores %}
+        <option value="{{ profesor.id }}">{{ profesor.nombre }}</option>
+        {% endfor %}
+      </select>
+      <input class="botons" type="submit" value="Guardar" />
+      <button type="button" class="btn btn-primary" id="hideFormButton">Cancelar</button>
+  </form>
+</section>
+
+<script>
+  document.getElementById('showFormButton').onclick = function() {
+    var form = document.getElementById('registrationForm');
+    var backdrop = document.getElementById('backdrop');
+    form.style.display = 'block'; 
+    backdrop.style.display = 'block'; 
+  };
+
+  document.getElementById('hideFormButton').onclick = function() {
+    var form = document.getElementById('registrationForm');
+    var backdrop = document.getElementById('backdrop');
+    form.style.display = 'none'; 
+    backdrop.style.display = 'none'; 
+  };
+</script>
 {% endblock %}

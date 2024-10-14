@@ -2,6 +2,13 @@ from urllib import request
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, JsonResponse
 from .models import Persona
+from .forms import PersonaForm
+
+def persona(request):
+    data = {
+        'form': PersonaForm()
+    }
+    return render(request, 'lista-estudiantes.html', data)
 
 def get_estudiantes(request):
     
@@ -23,7 +30,7 @@ def registrar_persona(request):
         telefono = request.POST.get('numtelefono')
         correo = request.POST.get('correo')  
         fecha_nacimiento = request.POST.get('fecha_nacimiento')
-        rol = request.POST.get('txtrol')
+        rol = 'Estudiante'
         
         peronas = Persona.objects.create(
             nombre = nombre,

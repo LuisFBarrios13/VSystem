@@ -1,0 +1,92 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h1 style="text-align: center;">{{ title }}</h1>
+
+<div style="text-align: right; margin-bottom: 10px;">
+    <button id="showFormButton" class="btn btn-primary">Relacionar Estudiante</button>
+</div>
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Estudiante</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Fecha inicio</th>
+            <th scope="col">Fecha final</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Nota final</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for relacion in relaciones %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ relacion.estudiante.nombre }} {{ relacion.estudiante.apellidos }}</td>
+            <td>{{ relacion.curso.nombre }}</td>
+            <td>{{ relacion.fechaInicio }}</td>
+            <td>{{ relacion.fechaFinal }}</td>
+            <td>{{ relacion.estado }}</td>
+            <td>{{ relacion.notaFinal }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="backdrop" id="backdrop" style="display: none;"></div> <!-- Fondo borroso -->
+
+<section class="form-register" id="registrationForm" style="display: none;">
+    <h2>Relacionar Estudiante</h2>
+    <form action="{% url 'relacionar_curso_est' %}" method="POST">{% csrf_token %}
+        <label for="id_estudiante">Estudiante</label>
+        <select class="controls" name="estudiante">
+            <option value="">Seleccione un Estudiante</option>
+            {% for estudiante in estudiantes %}
+            <option value="{{ estudiante.id }}">{{ estudiante.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="id_curso">Curso</label>
+        <select class="controls" name="txtcurso" required>
+            <option value="">Seleccione un Curso</option>
+            {% for curso in cursos %}
+            <option value="{{ curso.id }}">{{ curso.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="id_fechaInicio">Fecha de Inicio</label>
+        <input class="controls" type="date" name="fechainicio" placeholder="Fecha de Inicio" required>
+
+        <label for="id_fechaFinal">Fecha de Finalización</label>
+        <input class="controls" type="date" name="fechafinal" placeholder="Fecha de Finalización" required>
+
+        <label for="id_estado">Estado</label>
+        <input class="controls" type="text" name="txtestado" placeholder="Estado" required>
+
+        <label for="id_notaFinal">Nota Final</label>
+        <input class="controls" type="number" name="notafinal" placeholder="Nota Final" step="0.01" required> <!-- Usa type="number" para calificaciones numéricas -->
+
+        <input class="botons" type="submit" value="Guardar">
+        <button type="button" class="btn btn-primary" id="hideFormButton">Cancelar</button>
+    </form>
+</section>
+
+<script>
+    // Función para mostrar el formulario y el fondo borroso
+    document.getElementById('showFormButton').onclick = function() {
+        var form = document.getElementById('registrationForm');
+        var backdrop = document.getElementById('backdrop');
+        form.style.display = 'block'; // Muestra el formulario
+        backdrop.style.display = 'block'; // Muestra el fondo borroso
+    };
+
+    // Función para ocultar el formulario y el fondo borroso
+    document.getElementById('hideFormButton').onclick = function() {
+        var form = document.getElementById('registrationForm');
+        var backdrop = document.getElementById('backdrop');
+        form.style.display = 'none'; // Oculta el formulario
+        backdrop.style.display = 'none'; // Oculta el fondo borroso
+    };
+</script>
+{% endblock %}

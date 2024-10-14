@@ -2,6 +2,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "css/styles.css" %}">
@@ -25,14 +39,13 @@
                 <a style="text-decoration: none;" href="{% url "inicio" %}">Inicio</a>
             </li>            
             <li class="nav-item">
-                <a style="text-decoration: none;" href="{% url "prueba" %}">Prueba</a>
-            </li>
-            <li class="nav-item">
                 <a style="text-decoration: none;" href="{% url "lista-estudiantes" %}">Estudiante</a>
             </li>
             <li class="nav-item">
                 <a style="text-decoration: none;" href="{% url "lista-cursos" %}">Cursos</a>
-            </li>               
+            </li>
+            <li class="nav-item">
+                <a style="text-decoration: none;" href="{% url "lista-relacion" %}">Relacion</a>               
         </ul>
     </nav>
 

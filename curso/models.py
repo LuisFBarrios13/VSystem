@@ -22,8 +22,8 @@ class Curso(models.Model):
            return f'{self.nombre} - {self.profesor.nombre}'
         else:
             return f'{self.nombre} - Sin Profesor Asignado'
-    
-    
+        
+
     
     class Meta:
         db_table = 'curso'
